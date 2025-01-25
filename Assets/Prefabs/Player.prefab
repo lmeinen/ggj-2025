@@ -203,10 +203,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 291762035770894182}
   - {fileID: 5829463032022836285}
   - {fileID: 109408718556761790}
   - {fileID: 2858046209913078917}
+  - {fileID: 291762035770894182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8753290123400087510
@@ -223,8 +223,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   fireAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  dashAction: {fileID: 0}
   speed: 5
   gun: {fileID: 3691846802398095518}
+  dashCooldown: 0
+  maxDashes: 2
+  dashDistance: 1
 --- !u!136 &4506023462651463240
 CapsuleCollider:
   m_ObjectHideFlags: 0
