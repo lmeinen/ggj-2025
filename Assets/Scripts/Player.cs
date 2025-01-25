@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
 
     Camera _mainCamera;
+    Rigidbody _rigidbody;
 
     public float dashCooldown = 0f;
     public float maxDashes = 2f;
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         _mainCamera = Camera.main;
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
         //move the player according to keyboard input
         Vector2 move_action = moveAction.action.ReadValue<Vector2>();
         Vector3 move = speed * new Vector3(move_action.x, 0, move_action.y);
-        transform.position += move * Time.deltaTime;
+        _rigidbody.linearVelocity = move;
 
         if (move.z != 0 || move.x != 0)
         {
