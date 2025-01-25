@@ -51,14 +51,23 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-        if (IsLevelFinished())
+        Finished = IsLevelFinished();
+
+        // Check if the 'C' key is pressed
+        if (Input.GetKeyDown(KeyCode.C))
         {
+            // override for testing
             Finished = true;
-            
-            // switch rendering style
-            RemoveRenderLayer(BLUE_PILL_LAYER);
-            AddRenderLayer(RED_PILL_LAYER);
         }
+    }
+
+    public void StartGlitch()
+    {
+        Debug.Log("Glitching...");
+
+        // switch rendering style
+        RemoveRenderLayer(BLUE_PILL_LAYER);
+        AddRenderLayer(RED_PILL_LAYER);
     }
 
     public static GameObject CreateShot(GameObject g, Vector3 pos, Quaternion rot, Vector3 speed, float spread, Vector3 parent_vel)

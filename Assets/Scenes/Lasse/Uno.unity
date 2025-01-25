@@ -2201,12 +2201,32 @@ PrefabInstance:
       value: Game
       objectReference: {fileID: 0}
     - target: {fileID: 2971240184885026711, guid: 7b0929e89bc3d644fa7fba3e18117c72, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2971240184885026711, guid: 7b0929e89bc3d644fa7fba3e18117c72, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3238029656349732635, guid: 7b0929e89bc3d644fa7fba3e18117c72, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238029656349732635, guid: 7b0929e89bc3d644fa7fba3e18117c72, type: 3}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238029656349732635, guid: 7b0929e89bc3d644fa7fba3e18117c72, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238029656349732635, guid: 7b0929e89bc3d644fa7fba3e18117c72, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238029656349732635, guid: 7b0929e89bc3d644fa7fba3e18117c72, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

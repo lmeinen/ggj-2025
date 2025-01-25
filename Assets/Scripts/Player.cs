@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         {
             gun.AimAt(r.GetPoint(dist));
             playerVis.AimAt(r.GetPoint(dist));
-            playerVis.transform.Rotate(0,-90,0);
+            playerVis.transform.Rotate(0,90,0);
         }
         else
         {
