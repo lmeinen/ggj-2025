@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b155f8f620e3f549a29ce58f1042a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetimeFrom: 3
+  lifetimeTo: 7
   afterHitConvergeRate: 0.5
 --- !u!33 &9109003593635720288
 MeshFilter:

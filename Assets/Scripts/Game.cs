@@ -4,18 +4,19 @@ using UnityEngine;
 
 
 //The game Singleton. Here, you can store references to objects that need to be globally accessible
-public class LevelState : MonoBehaviour
+public class Game : MonoBehaviour
 {
     // we separate objects' rendering from their logic, and group their rendering styles into layers
     public const string BLUE_PILL_LAYER = "BluePill";
     public const string RED_PILL_LAYER = "RedPill";
 
-    public static LevelState I { get; private set; }
+    public static Game I { get; private set; }
     public bool Finished { get => _finished; private set => _finished = value; }
 
 
     public ParticleSystem bubblePopParticles;
     public ParticleSystem bulletPopParticles;
+    public ParticleSystem splatterParticles;
     public float popParticleSpeed = 10;
 
 
