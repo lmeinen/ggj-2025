@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public VisualEffectManager VisualEffectManager;
+    // public VisualEffectManager VisualEffectManager;
 
     Player _player;
 
@@ -19,8 +19,8 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        VisualEffectManager = GetComponent<VisualEffectManager>();
-        VisualEffectManager.EnableBluepill();
+        // VisualEffectManager = GetComponent<VisualEffectManager>();
+        // VisualEffectManager.EnableBluepill();
         // _material = GetComponent<MeshRenderer>().material;
         _player = FindAnyObjectByType<Player>();
     }
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
         if (_inBubble == null)
         {
             //change the enemy color, save the bubble, and mark enemy as dead
-            VisualEffectManager.EnableRedpill();
+            // VisualEffectManager.EnableRedpill();
             // _material.color = Color.green;
             _inBubble = b;
             Dead = true;
