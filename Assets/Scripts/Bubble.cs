@@ -34,12 +34,7 @@ public class Bubble : Shot
     protected override void MyUpdate()
     {
         base.MyUpdate();
-        //if the bubble didn't hit an enemy, make it drift up slightly
-        if (!hit_enemy)
-        {
-            _rb.AddForce(_elevationForce * Time.deltaTime * Physics.gravity, ForceMode.VelocityChange);
-        }
-        else
+        if (hit_enemy)
         {
             //converge to the hit enemy at a given rate (afterHitConvergeRate percent each second)
             float K = Mathf.Exp(Mathf.Log(afterHitConvergeRate) * Time.deltaTime);

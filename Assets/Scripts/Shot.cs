@@ -13,13 +13,18 @@ public class Shot : MonoBehaviour
     public float sizeFrom = .5f;
     public float sizeTo = 1f;
 
+    public float gravityFrom = 0f;
+    public float gravityTo = 0f;
+
     protected virtual bool CanBeDestroyed => true;
     protected virtual Color Color => Color.white;
 
 
+    float _gravity;
     public virtual void Initialize(Vector3 speed, float spread, Vector3 parent_vel)
     {
         _lifetime = Random.Range(lifetimeFrom, lifetimeTo);
+        _gravity = Random.Range(gravityFrom, gravityTo);
 
         _rb = GetComponent<Rigidbody>();
         
@@ -46,6 +51,7 @@ public class Shot : MonoBehaviour
             WhenDestroyed();
             Destroy(gameObject);
         }
+        _rb.AddForce(new Vector3(0, _gravity, 0));
     }
 
     public virtual void HitSomething(Collider hit) { }

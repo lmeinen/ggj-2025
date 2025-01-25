@@ -27,12 +27,10 @@ public class Player : MonoBehaviour
     Camera _mainCamera;
     Rigidbody _rigidbody;
 
-    public float dashCooldown = 0f;
-    public float maxDashes = 2f;
-    public float dashDistance = 1f;
-    float _dashAmount = 0f;
 
-    Vector2 _dashDirection;
+    public PlayerDash dash;
+
+    Vector3 _dashDirection;
 
     void Start()
     {
@@ -43,10 +41,18 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //move the player according to keyboard input
         Vector2 move_action = moveAction.action.ReadValue<Vector2>();
         Vector3 move = speed * new Vector3(move_action.x, 0, move_action.y);
-        _rigidbody.linearVelocity = move;
+        if (move.x != 0 || move.z != 0) _dashDirection = move;
+
+        if (dashAction.action.triggered && dash.CanDash())
+            dash.Dash(_dashDirection.normalized);
+        
+
+
+        _rigidbody.linearVelocity = move + dash.Velocity;
 
         if (move_action.x != 0 || move_action.y != 0)
         {
@@ -77,16 +83,7 @@ public class Player : MonoBehaviour
         if (fireAction.action.ReadValue<float>() != 0f)
             gun.AttemptToFire(move);
 
-        if (dashAction.action.triggered)
-        {
-            if (_dashAmount >= dashCooldown)
-            {
-                _dashAmount -= dashCooldown;
-                _dashDirection = _dashDirection.normalized;
-                transform.position += new Vector3(_dashDirection.x, 0, _dashDirection.y) * dashDistance;
-            }
-        }
-        _dashAmount = Mathf.Min(maxDashes, _dashAmount + Time.deltaTime);
+
     }
 
 

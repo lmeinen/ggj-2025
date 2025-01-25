@@ -52,6 +52,8 @@ MonoBehaviour:
   lifetimeTo: 7
   sizeFrom: 0.5
   sizeTo: 1
+  gravityFrom: -5
+  gravityTo: 5
   afterHitConvergeRate: 0.5
 --- !u!33 &9109003593635720288
 MeshFilter:

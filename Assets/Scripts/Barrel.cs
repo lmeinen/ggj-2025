@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class Barrel : MonoBehaviour
@@ -9,6 +10,8 @@ public class Barrel : MonoBehaviour
     public GameObject enemyShotPrefab;
 
 
+    public CinemachineImpulseSource _explosionScreenShake;
+
     private void OnTriggerEnter(Collider collision)
     {
         bool is_bubble = collision.CompareTag("Bubble");
@@ -16,6 +19,7 @@ public class Barrel : MonoBehaviour
 
         if (is_bubble || is_enemy_shot)
         {
+            _explosionScreenShake.GenerateImpulse();
             Destroy(gameObject);
             for (int i = 0; i < bubbleAmount; i++)
             {

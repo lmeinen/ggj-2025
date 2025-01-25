@@ -9,6 +9,8 @@ TagManager:
   - EnemyShot
   - Wall
   - Floor
+  - HellMusic
+  - HappyMusic
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - RedPill
   - Floor
   - 
-  - 
+  - Warnings
   - 
   - 
   - 
