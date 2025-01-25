@@ -103,6 +103,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 90f1f6a63b6de084bb0cdf6d03d937c0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4eca9ca991461e64599b442c6e0d6ee2, type: 2}
     - target: {fileID: 919132149155446097, guid: 90f1f6a63b6de084bb0cdf6d03d937c0, type: 3}
       propertyPath: m_Name
       value: BluePill
@@ -169,6 +173,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b3599e72df53597469f2b0b92c729674, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bc2b544b33e40b2418439cc9910ad277, type: 2}
     - target: {fileID: 919132149155446097, guid: b3599e72df53597469f2b0b92c729674, type: 3}
       propertyPath: m_Name
       value: Wall
