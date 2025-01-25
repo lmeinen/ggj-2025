@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93ee14260e5b854096f647365575b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VisualEffectManager: {fileID: 0}
   gun: {fileID: 1280033386252453878}
 --- !u!33 &7455751161371259268
 MeshFilter:
@@ -266,6 +267,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7025668796133032762}
+  - {fileID: 4889691325513015328}
   m_Father: {fileID: 6729962237444147948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1280033386252453878
@@ -285,3 +287,35 @@ MonoBehaviour:
     projectileSpeed: 10
     projectile: {fileID: 5473549336006888113, guid: 50e5c92d4e58c8840a579884750e200a, type: 3}
     projectileSpread: 0
+  projectileEmitTransform: {fileID: 4889691325513015328}
+--- !u!1 &6575359654026299387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4889691325513015328}
+  m_Layer: 0
+  m_Name: EmitTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4889691325513015328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6575359654026299387}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.981, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1464041470461059404}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

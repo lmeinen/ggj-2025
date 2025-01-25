@@ -27,6 +27,8 @@ public class Gun : MonoBehaviour
 {
     public GunParameters gunParameters;
 
+    public Transform projectileEmitTransform;
+
     //how many projectiles to fire next frame
     float fireAmount = 0f;
 
@@ -58,9 +60,11 @@ public class Gun : MonoBehaviour
     void Fire()
     {
         //spawn a projectile and send it in the firing direction
-        Vector3 fire_dir = transform.right;
-        var shot = Instantiate(gunParameters.projectile, transform.position + fire_dir * transform.localScale.x, transform.rotation, LevelState.I.transform);
-        shot.GetComponent<Shot>().Initialize(fire_dir * gunParameters.projectileSpeed, gunParameters.projectileSpread);
+        LevelState.CreateShot(gunParameters.projectile, projectileEmitTransform.position, projectileEmitTransform.rotation, transform.right * gunParameters.projectileSpeed, gunParameters.projectileSpread);
+
+        //Vector3 fire_dir = transform.right;
+        //var shot = Instantiate(gunParameters.projectile, transform.position + fire_dir * transform.localScale.x, transform.rotation, LevelState.I.transform);
+        //shot.GetComponent<Shot>().Initialize(fire_dir * gunParameters.projectileSpeed, gunParameters.projectileSpread);
     }
 
     //Rotate the gun to point it at the provided position
