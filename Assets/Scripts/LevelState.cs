@@ -1,6 +1,4 @@
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 
@@ -81,7 +79,8 @@ public class LevelState : MonoBehaviour
                 startColor = color
             };
             I.bubblePopParticles.Emit(ps, 1);
-        } 
+        }
+    }
     // Method to add a specific layer
     void AddRenderLayer(string layerName)
     {
