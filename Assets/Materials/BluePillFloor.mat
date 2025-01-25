@@ -64,6 +64,22 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ParallaxMapping_819a685b28854f35a686783ea2b997af_Heightmap_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: b6c2924e96cee9d478da8aadb630a9dc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_ac60a6c9886e4f52a40594432493f951_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 2e713f0d0eedba84ea7710614d00f3b7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_b9603dae0a844341a033e99b2e7c11d2_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 15ef65522dcb60448944eda197731322, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_d271164311d042eb84df3d4505c5bf2f_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 3d34e8c8f66725b4399e7a2acb5cc11c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -119,6 +135,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _TexScale: {r: 5, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &3587124920253585703

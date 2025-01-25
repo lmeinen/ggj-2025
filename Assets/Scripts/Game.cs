@@ -49,8 +49,6 @@ public class Game : MonoBehaviour
     }
 
 
-
-
     void Update()
     {
         if (IsLevelFinished())
