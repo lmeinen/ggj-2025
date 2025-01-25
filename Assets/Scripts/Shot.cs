@@ -11,6 +11,7 @@ public class Shot : MonoBehaviour
     public float lifetimeTo = 7f;
 
     protected virtual bool CanBeDestroyed => true;
+    protected virtual Color Color => Color.white;
 
 
     public virtual void Initialize(Vector3 speed, float spread, Vector3 parent_vel)
@@ -48,6 +49,7 @@ public class Shot : MonoBehaviour
 
     protected virtual void WhenDestroyed() {
         Destroy(gameObject);
+        SpawnParticles(Game.I.bubblePopParticles, Color);
     }
 
 
@@ -55,8 +57,8 @@ public class Shot : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        Vector3 r = LevelState.I.MainCamera.transform.right * LevelState.I.popParticleSpeed;
-        Vector3 u = LevelState.I.MainCamera.transform.up * LevelState.I.popParticleSpeed;
+        Vector3 r = Game.I.MainCamera.transform.right * Game.I.popParticleSpeed;
+        Vector3 u = Game.I.MainCamera.transform.up * Game.I.popParticleSpeed;
 
         for (int i = 0; i < 40; i++)
         {
@@ -78,6 +80,14 @@ public class Shot : MonoBehaviour
         {
             WhenDestroyed();
             Destroy(gameObject);
+
+            ParticleSystem.EmitParams p = new()
+            {
+                position = collision.GetContact(0).point + collision.GetContact(0).normal * 0.02f,
+                rotation3D = -Quaternion.LookRotation(collision.GetContact(0).normal).eulerAngles,
+                startColor = Color
+            };
+            Game.I.splatterParticles.Emit(p, 1);
         }
         else
         {

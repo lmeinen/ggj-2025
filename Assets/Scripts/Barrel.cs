@@ -23,7 +23,7 @@ public class Barrel : MonoBehaviour
 
                 Quaternion rot = is_bubble ? Quaternion.identity : Quaternion.LookRotation(speed, Random.insideUnitSphere);
 
-                LevelState.CreateShot(is_bubble ? bubblePrefab : enemyShotPrefab, transform.position, rot, speed, 0f, Vector3.zero);
+                Game.CreateShot(is_bubble ? bubblePrefab : enemyShotPrefab, transform.position, rot, speed, 0f, Vector3.zero);
             }
         }
     }

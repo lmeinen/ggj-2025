@@ -14,6 +14,9 @@ public class Bubble : Shot
     protected Material _mat;
 
     protected override bool CanBeDestroyed => !hit_enemy;
+    protected override Color Color => _mat.color;
+
+    float _elevationForce;
 
 
     //Initialize the bubble - give it the initial velocity and spread
@@ -23,6 +26,8 @@ public class Bubble : Shot
         _mat = GetComponent<MeshRenderer>().material;
         //assign a random, bright, color
         _mat.color = Random.ColorHSV(0, 1, 1, 1, 0.5f, 0.5f, 0.6f, 0.6f);
+
+        _elevationForce = Random.Range(-0.05f, 0.02f);
     }
 
     // Update is called once per frame
@@ -32,7 +37,7 @@ public class Bubble : Shot
         //if the bubble didn't hit an enemy, make it drift up slightly
         if (!hit_enemy)
         {
-            _rb.AddForce(-0.03f * Time.deltaTime * Physics.gravity, ForceMode.VelocityChange);
+            _rb.AddForce(_elevationForce * Time.deltaTime * Physics.gravity, ForceMode.VelocityChange);
         }
         else
         {
@@ -54,11 +59,5 @@ public class Bubble : Shot
         hit_enemy = true;
         hit_enemy_pos = enemy.transform.position;
         hit_enemy_size = enemy.transform.localScale.x * 4f;
-    }
-
-    protected override void WhenDestroyed()
-    {
-        base.WhenDestroyed();
-        SpawnParticles(LevelState.I.bubblePopParticles, _mat.color);
     }
 }
