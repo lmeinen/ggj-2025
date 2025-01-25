@@ -36,7 +36,9 @@ public class Shot : MonoBehaviour
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Start() => MyStart();
+
+    protected virtual void MyStart()
     {
         if (_rb == null) Initialize(Vector3.zero, 0, Vector3.zero);
     }
@@ -51,7 +53,7 @@ public class Shot : MonoBehaviour
             WhenDestroyed();
             Destroy(gameObject);
         }
-        _rb.AddForce(new Vector3(0, _gravity, 0));
+        _rb.AddForce(new Vector3(0, _gravity * Time.deltaTime, 0), ForceMode.VelocityChange);
     }
 
     public virtual void HitSomething(Collider hit) { }

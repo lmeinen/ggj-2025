@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     {
         if (!Dead)
         {
-            Vector3 dif = _player.transform.position - transform.position;
+            Vector3 dif = _player.Center - transform.position;
             float distance = dif.magnitude;
             dif /= distance;
             float angle = Mathf.Acos(Vector3.Dot(dif, transform.right.normalized));
@@ -53,7 +53,6 @@ public class Enemy : MonoBehaviour
                 //if we can see the player, aim at him and attempt to fire
                 if (hit_anything && hit.collider.CompareTag("Player"))
                 {
-                    //gun.AimAt(_player.transform.position);
                     //turn towards the player
                     float target_rot = -Mathf.Atan2(dif.z, dif.x) * Mathf.Rad2Deg;
                     float current_rot = transform.rotation.eulerAngles.y;

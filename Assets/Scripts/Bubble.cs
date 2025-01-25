@@ -16,18 +16,13 @@ public class Bubble : Shot
     protected override bool CanBeDestroyed => !hit_enemy;
     protected override Color Color => _mat.color;
 
-    float _elevationForce;
-
-
     //Initialize the bubble - give it the initial velocity and spread
     public override void Initialize(Vector3 speed, float spread, Vector3 parent_vel)
     {
         base.Initialize(speed, spread, parent_vel);
         _mat = GetComponent<MeshRenderer>().material;
         //assign a random, bright, color
-        _mat.color = Random.ColorHSV(0, 1, 1, 1, 0.5f, 0.5f, 0.6f, 0.6f);
-
-        _elevationForce = Random.Range(-0.05f, 0.05f);
+        _mat.color = Random.ColorHSV(0, 1, 1, 1, 0.5f, 0.5f, 0.9f, 0.9f);
     }
 
     // Update is called once per frame

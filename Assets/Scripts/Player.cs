@@ -32,6 +32,10 @@ public class Player : MonoBehaviour
 
     Vector3 _dashDirection;
 
+    public Vector3 Center => transform.position + new Vector3(0, 1f, 0);
+
+    bool _dead = false;
+
     void Start()
     {
         _mainCamera = Camera.main;
@@ -91,8 +95,9 @@ public class Player : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         //if he was hit by an enemy shot
-        if (other.CompareTag("EnemyShot"))
+        if (!_dead && other.CompareTag("EnemyShot"))
         {
+            _dead = true;
             //TODO somehow kill the player & reload the level & maybe show the glitch
             Debug.Log("Player hit by enemy shot. Skill issue.");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
