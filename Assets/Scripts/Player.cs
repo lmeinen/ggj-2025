@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class Player : MonoBehaviour
         Vector3 move = speed * new Vector3(move_action.x, 0, move_action.y);
         _rigidbody.linearVelocity = move;
 
-        if (move.z != 0 || move.x != 0)
+        if (move_action.x != 0 || move_action.y != 0)
         {
             _dashDirection = move;
             if (!animator.GetBool("isMoving")) animator.SetBool("isMoving", true);
@@ -97,6 +98,7 @@ public class Player : MonoBehaviour
         {
             //TODO somehow kill the player & reload the level & maybe show the glitch
             Debug.Log("Player hit by enemy shot. Skill issue.");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
