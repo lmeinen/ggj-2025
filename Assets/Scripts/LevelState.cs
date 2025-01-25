@@ -57,10 +57,10 @@ public class LevelState : MonoBehaviour
         }
     }
 
-    public static GameObject CreateShot(GameObject g, Vector3 pos, Quaternion rot, Vector3 speed, float spread)
+    public static GameObject CreateShot(GameObject g, Vector3 pos, Quaternion rot, Vector3 speed, float spread, Vector3 parent_vel)
     {
         GameObject shot = Instantiate(g, pos, rot, I.transform);
-        shot.GetComponent<Shot>().Initialize(speed, spread);
+        shot.GetComponent<Shot>().Initialize(speed, spread, parent_vel);
         return shot;
     }
 

@@ -137,6 +137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 1280033386252453878}
+  turningRate: 100
+  viewCone: 2.513274
+  viewDistance: 10
 --- !u!136 &1892591749181355446
 CapsuleCollider:
   m_ObjectHideFlags: 0

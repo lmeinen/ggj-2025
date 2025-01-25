@@ -37,8 +37,9 @@ public class Player : MonoBehaviour
     void Update()
     {
         //move the player according to keyboard input
-        Vector2 move = moveAction.action.ReadValue<Vector2>();
-        transform.position += speed * Time.deltaTime * new Vector3(move.x, 0, move.y);
+        Vector2 move_action = moveAction.action.ReadValue<Vector2>();
+        Vector3 move = speed * new Vector3(move_action.x, 0, move_action.y);
+        transform.position += move * Time.deltaTime;
 
         if (move.y != 0 || move.x != 0)
             _dashDirection = move;
@@ -57,7 +58,8 @@ public class Player : MonoBehaviour
             Debug.LogError("Mouse is not pointing at the ground");
         }
         //gun should fire = mouse is pressed
-        gun.ShouldFire = fireAction.action.ReadValue<float>() != 0f;
+        if (fireAction.action.ReadValue<float>() != 0f)
+            gun.AttemptToFire(move);
 
         if (dashAction.action.triggered)
         {

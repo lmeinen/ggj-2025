@@ -16,7 +16,7 @@ public class Barrel : MonoBehaviour
             for (int i = 0; i < bubbleAmount; i++)
             {
                 Vector3 speed = bubbleSpeed * Random.insideUnitSphere;
-                LevelState.CreateShot(bubblePrefab, transform.position, Quaternion.LookRotation(speed, Vector3.up), speed, 0f);
+                LevelState.CreateShot(bubblePrefab, transform.position, Quaternion.LookRotation(speed, Vector3.up), speed, 0f, Vector3.zero);
             }
         }
     }

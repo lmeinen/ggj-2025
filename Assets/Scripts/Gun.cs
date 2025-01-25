@@ -33,34 +33,39 @@ public class Gun : MonoBehaviour
     float fireAmount = 0f;
 
     //true if the owner is attempting to fire
-    private bool _shouldFire = false;
-    public bool ShouldFire
-    {
-        get => _shouldFire;
-        set => _shouldFire = value;
-    }
-    
+    //private bool _shouldFire = false;
+    //public bool ShouldFire
+    //{
+    //    get => _shouldFire;
+    //    set => _shouldFire = value;
+    //}
+
+    float _lastFireTime = 0f;
+    public bool FiredRecently => Time.realtimeSinceStartup - _lastFireTime < 0.5f;
+
     // Update is called once per frame
     void Update()
     {
         //if we should fire, add to fire amount and fire any generated projectiles
-        if (ShouldFire)
-        {
-            fireAmount += gunParameters.fireRate * Time.deltaTime;
+    }
 
-            while (fireAmount > 0f)
-            {
-                fireAmount -= 1f;
-                Fire();
-            }
+    public void AttemptToFire(Vector3 parent_velocity)
+    {
+        fireAmount += gunParameters.fireRate * Time.deltaTime;
+
+        while (fireAmount > 0f)
+        {
+            fireAmount -= 1f;
+            Fire(parent_velocity);
+            _lastFireTime = Time.realtimeSinceStartup;
         }
     }
 
 
-    void Fire()
+    void Fire(Vector3 parent_velocity)
     {
         //spawn a projectile and send it in the firing direction
-        LevelState.CreateShot(gunParameters.projectile, projectileEmitTransform.position, projectileEmitTransform.rotation, transform.right * gunParameters.projectileSpeed, gunParameters.projectileSpread);
+        LevelState.CreateShot(gunParameters.projectile, projectileEmitTransform.position, projectileEmitTransform.rotation, transform.right * gunParameters.projectileSpeed, gunParameters.projectileSpread, parent_velocity);
 
         //Vector3 fire_dir = transform.right;
         //var shot = Instantiate(gunParameters.projectile, transform.position + fire_dir * transform.localScale.x, transform.rotation, LevelState.I.transform);

@@ -1,3 +1,4 @@
+using System.Globalization;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -13,6 +14,11 @@ public class Enemy : MonoBehaviour
 
     //the gun of the enemy
     public Gun gun;
+
+
+    public float turningRate = 0f;
+    public float viewCone = Mathf.PI * 0.8f;
+    public float viewDistance = 10f;
 
     public bool Dead { get => _dead; private set => _dead = value; }
 
@@ -30,25 +36,52 @@ public class Enemy : MonoBehaviour
     {
         if (!Dead)
         {
-            //try aiming at the player
-            int layer_mask = LayerMask.GetMask("Player") | LayerMask.GetMask("Walls");
             Vector3 dif = _player.transform.position - transform.position;
-            bool hit_anything = Physics.Raycast(transform.position, dif.normalized, out RaycastHit hit, float.PositiveInfinity, layer_mask);
+            float distance = dif.magnitude;
+            dif /= distance;
+            float angle = Mathf.Acos(Vector3.Dot(dif, transform.right.normalized));
 
-            //if we can see the player, aim at him and attempt to fire
-            if (hit_anything && hit.collider.CompareTag("Player"))
+            bool player_detected = (_player.gun.FiredRecently || angle < viewCone/2) && distance < viewDistance;
+
+            //player in view cone and close enough
+            if (player_detected)
             {
-                gun.AimAt(_player.transform.position);
-                gun.ShouldFire = true;
+                //try aiming at the player
+                int layer_mask = LayerMask.GetMask("Player") | LayerMask.GetMask("Walls");
+                bool hit_anything = Physics.Raycast(transform.position, dif.normalized, out RaycastHit hit, float.PositiveInfinity, layer_mask);
+
+                //if we can see the player, aim at him and attempt to fire
+                if (hit_anything && hit.collider.CompareTag("Player"))
+                {
+                    //gun.AimAt(_player.transform.position);
+                    //turn towards the player
+                    float target_rot = -Mathf.Atan2(dif.z, dif.x) * Mathf.Rad2Deg;
+                    float current_rot = transform.rotation.eulerAngles.y;
+
+                    //assume both in range <-PI, PI>
+                    float dist_pos = (target_rot - current_rot + 360) % 360;
+                    float dist_neg = (-target_rot+ current_rot + 360) % 360;
+
+                    float next_rot;
+                    float rot_step = turningRate * Time.deltaTime;
+                    if (Mathf.Min(dist_pos, dist_neg) < rot_step)
+                        next_rot = target_rot;
+                    else
+                    {
+                        if (dist_pos < dist_neg)
+                        {
+                            next_rot = current_rot + rot_step;
+                        }
+                        else
+                        {
+                            next_rot = current_rot - rot_step;
+                        }
+                    }
+                    transform.rotation = Quaternion.Euler(0, next_rot, 0);
+
+                    gun.AttemptToFire(Vector3.zero);
+                }
             }
-            else
-            {
-                gun.ShouldFire = false;
-            }
-        }
-        else
-        {
-            gun.ShouldFire = false;
         }
     }
 

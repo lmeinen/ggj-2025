@@ -16,9 +16,9 @@ public class Bubble : Shot
     float _lifetimeRemaining;
 
     //Initialize the bubble - give it the initial velocity and spread
-    public override void Initialize(Vector3 speed, float spread)
+    public override void Initialize(Vector3 speed, float spread, Vector3 parent_vel)
     {
-        base.Initialize(speed, spread);
+        base.Initialize(speed, spread, parent_vel);
         _mat = GetComponent<MeshRenderer>().material;
         //assign a random, bright, color
         _mat.color = Random.ColorHSV(0, 1, 1, 1, 0.5f, 0.5f, 0.6f, 0.6f);
