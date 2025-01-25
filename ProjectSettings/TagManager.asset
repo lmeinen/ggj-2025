@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - EnemyShot
   - Wall
+  - Floor
   layers:
   - Default
   - TransparentFX

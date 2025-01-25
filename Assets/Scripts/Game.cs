@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -39,9 +40,12 @@ public class Game : MonoBehaviour
         }
     }
 
+
+    Enemy[] _levelEnemies;
     private void Start()
     {
         _mainCamera = Camera.main;
+        _levelEnemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
     }
 
 
@@ -82,7 +86,6 @@ public class Game : MonoBehaviour
     }
 
     private bool IsLevelFinished() {
-        Enemy[] enemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-        return enemies.Count(enemy => !enemy.Dead) == 0;
+        return _levelEnemies.All(enemy => enemy.Dead);
     }
 }

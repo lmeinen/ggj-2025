@@ -27,7 +27,7 @@ public class Bubble : Shot
         //assign a random, bright, color
         _mat.color = Random.ColorHSV(0, 1, 1, 1, 0.5f, 0.5f, 0.6f, 0.6f);
 
-        _elevationForce = Random.Range(-0.05f, 0.02f);
+        _elevationForce = Random.Range(-0.05f, 0.05f);
     }
 
     // Update is called once per frame
