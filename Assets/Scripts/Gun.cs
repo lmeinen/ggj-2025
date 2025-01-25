@@ -18,6 +18,9 @@ public struct GunParameters
 
     [Tooltip("How much the projectiles spreads, in radians")]
     public float projectileSpread;
+
+    [Tooltip("Audioclip to use (as base - pitch variations are randomized) when firing")]
+    public AudioClip fireSound;
 }
 
 
@@ -67,9 +70,15 @@ public class Gun : MonoBehaviour
         //spawn a projectile and send it in the firing direction
         Game.CreateShot(gunParameters.projectile, projectileEmitTransform.position, projectileEmitTransform.rotation, transform.right * gunParameters.projectileSpeed, gunParameters.projectileSpread, parent_velocity);
 
-        //Vector3 fire_dir = transform.right;
-        //var shot = Instantiate(gunParameters.projectile, transform.position + fire_dir * transform.localScale.x, transform.rotation, LevelState.I.transform);
-        //shot.GetComponent<Shot>().Initialize(fire_dir * gunParameters.projectileSpeed, gunParameters.projectileSpread);
+        if (gunParameters.fireSound != null)
+        {
+            if (SoundManager.Instance == null) {
+                Debug.Log("is null");
+            }
+            // TODO: Introduce pitch variation
+            SoundManager.Instance.PlaySound(gunParameters.fireSound, true);
+
+        }
     }
 
     //Rotate the gun to point it at the provided position
