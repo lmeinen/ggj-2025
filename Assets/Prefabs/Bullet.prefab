@@ -189,6 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetimeFrom: 3
   lifetimeTo: 7
+  sizeFrom: 0.75
+  sizeTo: 1
 --- !u!54 &1661312509536856878
 Rigidbody:
   m_ObjectHideFlags: 0

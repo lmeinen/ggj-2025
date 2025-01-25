@@ -10,6 +10,9 @@ public class Shot : MonoBehaviour
     public float lifetimeFrom = 3f;
     public float lifetimeTo = 7f;
 
+    public float sizeFrom = .5f;
+    public float sizeTo = 1f;
+
     protected virtual bool CanBeDestroyed => true;
     protected virtual Color Color => Color.white;
 
@@ -24,7 +27,7 @@ public class Shot : MonoBehaviour
         float angle = Random.Range(-spread/2, spread/2);
         _rb.linearVelocity = Mathf.Sin(angle) * right + Mathf.Cos(angle) * speed + parent_vel;
 
-        transform.localScale *= Random.Range(0.5f, 1.0f);        
+        transform.localScale *= Random.Range(sizeFrom, sizeTo);        
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

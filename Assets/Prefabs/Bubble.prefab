@@ -50,6 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetimeFrom: 3
   lifetimeTo: 7
+  sizeFrom: 0.5
+  sizeTo: 1
   afterHitConvergeRate: 0.5
 --- !u!33 &9109003593635720288
 MeshFilter:
@@ -114,10 +116,10 @@ SphereCollider:
   m_Material: {fileID: 13400000, guid: c13745269bc4fa84981b5f551932a72b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1152
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0

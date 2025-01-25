@@ -20,6 +20,7 @@ public class Barrel : MonoBehaviour
             for (int i = 0; i < bubbleAmount; i++)
             {
                 Vector3 speed = bubbleSpeed * Random.insideUnitSphere;
+                if (speed.y < 0) speed.y = -speed.y;
 
                 Quaternion rot = is_bubble ? Quaternion.identity : Quaternion.LookRotation(speed, Random.insideUnitSphere);
 
