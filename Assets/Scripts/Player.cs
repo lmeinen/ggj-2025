@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEditor.Animations;
 
 public class Player : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class Player : MonoBehaviour
 
     [Tooltip("The player gun")]
     public Gun gun;
+
+    [Tooltip("Animator")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private PlayerVisuals playerVis;
 
 
     Camera _mainCamera;
@@ -41,8 +46,15 @@ public class Player : MonoBehaviour
         Vector3 move = speed * new Vector3(move_action.x, 0, move_action.y);
         transform.position += move * Time.deltaTime;
 
-        if (move.y != 0 || move.x != 0)
+        if (move.z != 0 || move.x != 0)
+        {
             _dashDirection = move;
+            if (!animator.GetBool("isMoving")) animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            if (animator.GetBool("isMoving")) animator.SetBool("isMoving", false);
+        }
 
         //obtain the point where the mouse is pointing at the ground (assumed to be an infinite plane at Y = 0)
         Ray r = _mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -52,6 +64,8 @@ public class Player : MonoBehaviour
         if (dist > 0)
         {
             gun.AimAt(r.GetPoint(dist));
+            playerVis.AimAt(r.GetPoint(dist));
+            playerVis.transform.Rotate(0,-90,0);
         }
         else
         {
