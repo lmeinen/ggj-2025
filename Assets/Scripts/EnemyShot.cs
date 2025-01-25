@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class EnemyShot : Shot
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected override void WhenDestroyed()
     {
-        
+        base.WhenDestroyed();
+        SpawnParticles(LevelState.I.bulletPopParticles, Color.white);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void HitAWall()
     {
-        
+        WhenDestroyed();
+        Destroy(gameObject);
     }
 }
