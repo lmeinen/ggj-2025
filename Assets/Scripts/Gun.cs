@@ -59,7 +59,7 @@ public class Gun : MonoBehaviour
     {
         //spawn a projectile and send it in the firing direction
         Vector3 fire_dir = transform.right;
-        var shot = Instantiate(gunParameters.projectile, transform.position + fire_dir * transform.localScale.x, transform.rotation, Game.I.transform);
+        var shot = Instantiate(gunParameters.projectile, transform.position + fire_dir * transform.localScale.x, transform.rotation, LevelState.I.transform);
         shot.GetComponent<Shot>().Initialize(fire_dir * gunParameters.projectileSpeed, gunParameters.projectileSpread);
     }
 

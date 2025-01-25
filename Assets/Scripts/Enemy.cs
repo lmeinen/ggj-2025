@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public VisualEffectManager VisualEffectManager;
+
     Player _player;
-    Material _material;
 
     //true if the enemy is dead (= captured by a bubble)
     bool _dead = false;
@@ -13,17 +14,21 @@ public class Enemy : MonoBehaviour
     //the gun of the enemy
     public Gun gun;
 
+    public bool Dead { get => _dead; private set => _dead = value; }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _material = GetComponent<MeshRenderer>().material;
+        VisualEffectManager = GetComponent<VisualEffectManager>();
+        VisualEffectManager.EnableBluepill();
+        // _material = GetComponent<MeshRenderer>().material;
         _player = FindAnyObjectByType<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!_dead)
+        if (!Dead)
         {
             //try aiming at the player
             int layer_mask = LayerMask.GetMask("Player") | LayerMask.GetMask("Walls");
@@ -54,9 +59,10 @@ public class Enemy : MonoBehaviour
         if (_inBubble == null)
         {
             //change the enemy color, save the bubble, and mark enemy as dead
-            _material.color = Color.green;
+            VisualEffectManager.EnableRedpill();
+            // _material.color = Color.green;
             _inBubble = b;
-            _dead = true;
+            Dead = true;
         }
         else
         {
