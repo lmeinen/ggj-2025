@@ -15,11 +15,12 @@ public class LevelState : MonoBehaviour
 
 
     public ParticleSystem bubblePopParticles;
+    public ParticleSystem bulletPopParticles;
     public float popParticleSpeed = 10;
 
 
-
     Camera _mainCamera;
+    public Camera MainCamera => _mainCamera;
     bool _finished = false;
     void Awake()
     {
@@ -62,24 +63,6 @@ public class LevelState : MonoBehaviour
         GameObject shot = Instantiate(g, pos, rot, I.transform);
         shot.GetComponent<Shot>().Initialize(speed, spread, parent_vel);
         return shot;
-    }
-
-    public static void BubblePop(Vector3 pos, Color color)
-    {
-        Vector3 r = I._mainCamera.transform.right * I.popParticleSpeed;
-        Vector3 u = I._mainCamera.transform.up * I.popParticleSpeed;
-
-        for (int i = 0; i < 40; i++)
-        {
-            float angle = Random.Range(0, 2 * Mathf.PI);
-            ParticleSystem.EmitParams ps = new()
-            {
-                position = pos,
-                velocity = Mathf.Sin(angle) * r + Mathf.Cos(angle) * u,
-                startColor = color
-            };
-            I.bubblePopParticles.Emit(ps, 1);
-        }
     }
     // Method to add a specific layer
     void AddRenderLayer(string layerName)

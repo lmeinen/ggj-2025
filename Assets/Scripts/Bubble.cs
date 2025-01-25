@@ -13,7 +13,8 @@ public class Bubble : Shot
 
     protected Material _mat;
 
-    float _lifetimeRemaining;
+    protected override bool CanBeDestroyed => !hit_enemy;
+
 
     //Initialize the bubble - give it the initial velocity and spread
     public override void Initialize(Vector3 speed, float spread, Vector3 parent_vel)
@@ -22,12 +23,12 @@ public class Bubble : Shot
         _mat = GetComponent<MeshRenderer>().material;
         //assign a random, bright, color
         _mat.color = Random.ColorHSV(0, 1, 1, 1, 0.5f, 0.5f, 0.6f, 0.6f);
-        _lifetimeRemaining = Random.Range(3f, 7f);
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void MyUpdate()
     {
+        base.MyUpdate();
         //if the bubble didn't hit an enemy, make it drift up slightly
         if (!hit_enemy)
         {
@@ -43,13 +44,6 @@ public class Bubble : Shot
         }
         //send the velocity to the shader (fast bubbles are stretched a bit)
         _mat.SetVector("_Velocity", transform.worldToLocalMatrix * _rb.linearVelocity);
-
-        _lifetimeRemaining -= Time.deltaTime;
-        if (_lifetimeRemaining < 0f && !hit_enemy)
-        {
-            LevelState.BubblePop(transform.position, _mat.color);
-            Destroy(gameObject);
-        }
     }
 
 
@@ -60,5 +54,11 @@ public class Bubble : Shot
         hit_enemy = true;
         hit_enemy_pos = enemy.transform.position;
         hit_enemy_size = enemy.transform.localScale.x * 4f;
+    }
+
+    protected override void WhenDestroyed()
+    {
+        base.WhenDestroyed();
+        SpawnParticles(LevelState.I.bubblePopParticles, _mat.color);
     }
 }

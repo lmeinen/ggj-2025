@@ -50,6 +50,7 @@ MonoBehaviour:
   bubbleAmount: 100
   bubbleSpeed: 6
   bubblePrefab: {fileID: 322902714031803359, guid: e0bc399c9495cf74da090286195a2497, type: 3}
+  enemyShotPrefab: {fileID: 5473549336006888113, guid: 50e5c92d4e58c8840a579884750e200a, type: 3}
 --- !u!33 &3648886171875596070
 MeshFilter:
   m_ObjectHideFlags: 0
