@@ -5369,8 +5369,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tutorial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
-  m_sharedMaterial: {fileID: -4311902185584306452, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10667,8 +10667,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
-  m_sharedMaterial: {fileID: -4311902185584306452, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15906,8 +15906,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
-  m_sharedMaterial: {fileID: -4311902185584306452, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16034,6 +16034,30 @@ PrefabInstance:
       propertyPath: m_IncludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: footstepSounds.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: 'footstepSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fc22ef9c2e037757aef89e29e568ca7, type: 3}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: 'footstepSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: dab03c4f7797e0b37b1de82d261005be, type: 3}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: 'footstepSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c1e2270495efaf4fb48a0bede3da308, type: 3}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: 'footstepSounds.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: dfe36009c2ae5b0a9bfa72f1b02b4d94, type: 3}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: 'footstepSounds.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a1c9488ecafef67ef9ec715ccd87fb92, type: 3}
     - target: {fileID: 2596550475135761224, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.09
