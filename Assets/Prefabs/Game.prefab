@@ -15723,6 +15723,7 @@ MonoBehaviour:
   _waveText: {fileID: 3325770530033702813}
   _startGameAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _tutorialObject: {fileID: 285527528736424608}
+  bubblePrefab: {fileID: 1421772429048004085, guid: e0bc399c9495cf74da090286195a2497, type: 3}
 --- !u!1 &8426938189972758496
 GameObject:
   m_ObjectHideFlags: 0
