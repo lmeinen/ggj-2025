@@ -52,21 +52,22 @@ public class MusicManager : MonoBehaviour
         DontDestroyOnLoad(gameObject); // Keep this GameObject alive across scenes
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartHappy()
     {
-        // if (Game.I.Finished && happy.isPlaying)
-        // {
-        //     // start glitch
-        //     StartCoroutine(FadeToGlitch(happy, glitch, HAPPY_FADE_DURATION));
-        // }
+        glitch.Stop();
+        hell.Stop();
+        happy.Play();
+    }
 
-        // if (glitch.isPlaying && glitch.time >= glitch.clip.length - GLITCH_FADE_DURATION && !_isFading)
-        // {
-        //     // start fading out glitch for hell sound
-        //     StartCoroutine(Crossfade(glitch, hell, GLITCH_FADE_DURATION));
-        //     _isFading = true;
-        // }
+    public void StartHell()
+    {
+        happy.Stop();
+        glitch.Stop();
+        hell.Play();
+    }
+
+    private void StartSound(AudioSource audio) {
+        // audio.
     }
 
     public IEnumerator FadeToGlitch()

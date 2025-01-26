@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     public float viewDistance = 10f;
 
     public bool Dead { get => _dead; private set => _dead = value; }
+    public Bubble InBubble { get => _inBubble; private set => _inBubble = value; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -77,7 +78,7 @@ public class Enemy : MonoBehaviour
 
                     //assume both in range <-PI, PI>
                     float dist_pos = (target_rot - current_rot + 360) % 360;
-                    float dist_neg = (-target_rot+ current_rot + 360) % 360;
+                    float dist_neg = (-target_rot + current_rot + 360) % 360;
 
                     float next_rot;
                     float rot_step = turningRate * Time.deltaTime;
@@ -133,7 +134,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Kill() {
+    public void Kill()
+    {
         Dead = true;
     }
 
@@ -142,27 +144,45 @@ public class Enemy : MonoBehaviour
     {
         _agent.isStopped = true;
         //is this the first bubble to hit this enemy
-        if (_inBubble == null)
+        if (InBubble == null)
         {
             //change the enemy color, save the bubble, and mark enemy as dead
             // VisualEffectManager.EnableRedpill();
             // _material.color = Color.green;
-            _inBubble = b;
+            InBubble = b;
             Dead = true;
         }
         else
         {
             // enemy already in a bubble -> destroy the newly arrived bubble
-            if (_inBubble == b)
+            if (InBubble == b)
                 return;
             //enemy already in a bubble, just destroy it
             Destroy(b.gameObject);
         }
     }
 
-    private void OnDestroy() {
-        // clean up bubble
-        Destroy(_inBubble.gameObject);
+    public void Cleanup()
+    {
+        InBubble = null;
+        DeactivateChildrenRecursive(transform);
+    }
+
+    private void DeactivateChildrenRecursive(Transform parent)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.gameObject.layer == LayerMask.NameToLayer(Game.BLUE_PILL_LAYER))
+            {
+                child.gameObject.SetActive(false);
+            }
+
+            // Recursively process grandchildren
+            if (child.childCount > 0)
+            {
+                DeactivateChildrenRecursive(child);
+            }
+        }
     }
 
     //Called when a something enters the enemy trigger collider

@@ -65,9 +65,6 @@ public class EnemySpawner : MonoBehaviour
         _waveText.gameObject.SetActive(false);
         _waveText.gameObject.SetActive(false);
 
-        _currentEnemies.ForEach(enemy => Destroy(enemy.gameObject));
-        _currentEnemies.Clear();
-
         foreach (var spawn in enemyWaves[_waveIndex].spawn)
         {
             for (int i = 0; i < spawn.enemy_count; i++)
@@ -78,5 +75,14 @@ public class EnemySpawner : MonoBehaviour
         }
 
         _waveIndex++;
+    }
+
+    public void CleanupWave()
+    {
+        // remove all bubbles
+        _currentEnemies.ForEach(enemy => enemy.Cleanup());
+
+        // cleanup enemies list of current wave
+        _currentEnemies.Clear();
     }
 }

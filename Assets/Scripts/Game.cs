@@ -47,7 +47,7 @@ public class Game : MonoBehaviour
     bool _finished = false;
 
     private State _gameState;
-    public State GameState { get => _gameState; private set => _gameState = value;  }
+    public State GameState { get => _gameState; private set => _gameState = value; }
 
     void Awake()
     {
@@ -75,9 +75,11 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-        switch(GameState) {
+        switch (GameState)
+        {
             case State.TUTORIAL:
-                if(_startGameAction.action.ReadValue<Vector2>().sqrMagnitude != 0) {
+                if (_startGameAction.action.ReadValue<Vector2>().sqrMagnitude != 0)
+                {
                     _tutorialObject.SetActive(false);
                     GameState = State.WAVE_TEXT;
                     _enemySpawner.ShowWaveText();
@@ -86,7 +88,8 @@ public class Game : MonoBehaviour
                 break;
             case State.WAVE_TEXT:
                 TextDuration -= Time.deltaTime;
-                if (TextDuration <= 0) {
+                if (TextDuration <= 0)
+                {
                     _enemySpawner.SpawnWave();
                     GameState = State.IN_WAVE;
                 }
@@ -118,14 +121,20 @@ public class Game : MonoBehaviour
 
     public IEnumerator StartGlitch(float durationS, bool glitchSound)
     {
-        // TODO: add bool flag for sound
-        Debug.Log("Playing glitch for " + durationS);
+        Debug.Log($"Playing glitch for {durationS} seconds with sound = {glitchSound}");
 
-        if (glitchSound) {
-            MusicManager.I.FadeToGlitch();
+        if (glitchSound)
+        {
+            StartCoroutine(MusicManager.I.FadeToGlitch());
+        }
+        else
+        {
+            MusicManager.I.StartHell();
         }
 
         // switch rendering style
+        DestroyAllBubbles();
+        _enemySpawner.CleanupWave();
         RemoveRenderLayer(BLUE_PILL_LAYER);
         AddRenderLayer(RED_PILL_LAYER);
         globalVolume.profile = redPillProfile;
@@ -133,15 +142,28 @@ public class Game : MonoBehaviour
         // Wait for the specified duration
         yield return new WaitForSeconds(durationS);
 
-        // switch rendering style
+        // switch back to happy land
         RemoveRenderLayer(RED_PILL_LAYER);
         AddRenderLayer(BLUE_PILL_LAYER);
+        MusicManager.I.StartHappy();
         globalVolume.profile = bluePillProfile;
 
         // After glitch, start next wave
-        GameState = State.WAVE_TEXT;
         _enemySpawner.ShowWaveText();
+        GameState = State.WAVE_TEXT;
         TextDuration = 3f;
+    }
+
+    public void DestroyAllBubbles()
+    {
+        // Find all objects of type Bubble
+        Bubble[] bubbles = FindObjectsByType<Bubble>(FindObjectsSortMode.None);
+
+        // Loop through and destroy each one
+        foreach (Bubble bubble in bubbles)
+        {
+            Destroy(bubble.gameObject);
+        }
     }
 
     public static GameObject CreateShot(GameObject g, Vector3 pos, Quaternion rot, Vector3 speed, float spread, Vector3 parent_vel)
