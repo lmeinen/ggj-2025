@@ -14,6 +14,8 @@ public class Bubble : Shot
     [Tooltip("Audioclip to use (as base - pitch variations are randomized) when bubble pops")]
     public AudioClip popSound;
 
+    [Tooltip("Array with colors the bubbles should have")]
+    [SerializeField] private Color[] colors = new Color[] {  };
     protected Material _mat;
 
     protected override bool CanBeDestroyed => !hit_enemy;
@@ -25,7 +27,9 @@ public class Bubble : Shot
         base.Initialize(speed, spread, parent_vel);
         _mat = GetComponent<MeshRenderer>().material;
         //assign a random, bright, color
-        _mat.color = Random.ColorHSV(0, 1, 1, 1, 0.5f, 0.5f, 0.9f, 0.9f);
+        //_mat.color = Random.ColorHSV(0, 1, 1, 1, 0.5f, 0.5f, 0.9f, 0.9f);
+        int rand = Random.Range(0, colors.Length);
+        _mat.color = colors[rand];
     }
 
     protected override AudioClip HitSound() => popSound;
