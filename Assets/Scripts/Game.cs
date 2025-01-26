@@ -157,10 +157,10 @@ public class Game : MonoBehaviour
     public void DestroyAllBubbles()
     {
         // Find all objects of type Bubble
-        Bubble[] bubbles = FindObjectsByType<Bubble>(FindObjectsSortMode.None);
+        Shot[] bubbles = FindObjectsByType<Shot>(FindObjectsSortMode.None);
 
         // Loop through and destroy each one
-        foreach (Bubble bubble in bubbles)
+        foreach (Shot bubble in bubbles)
         {
             Destroy(bubble.gameObject);
         }
