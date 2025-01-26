@@ -31,13 +31,8 @@ public class SoundManager : MonoBehaviour
         if (randomizePitch)
         {
             audioSource.pitch = Random.Range(minPitch, maxPitch);
-
         }
 
-        Debug.Log("Playing sound with pitch " + audioSource.pitch);
         audioSource.PlayOneShot(clip);
-
-        // reset pitch
-        audioSource.pitch = 1f;
     }
 }
