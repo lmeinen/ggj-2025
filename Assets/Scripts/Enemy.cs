@@ -133,6 +133,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void Kill() {
+        Dead = true;
+    }
+
     //Called when the enemy is hit by a bubble
     void HitByBubble(Bubble b)
     {

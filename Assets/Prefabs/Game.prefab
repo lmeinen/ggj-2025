@@ -5093,6 +5093,8 @@ MonoBehaviour:
   bulletPopParticles: {fileID: 5591386926873275162}
   splatterParticles: {fileID: 1304709421576705226}
   popParticleSpeed: 10
+  _startGameAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _tutorialObject: {fileID: 285527528736424608}
 --- !u!1 &3735269532917164989
 GameObject:
   m_ObjectHideFlags: 0
@@ -15684,8 +15686,8 @@ MonoBehaviour:
   - spawn:
     - enemy_count: 2
       spawn: {fileID: 1128839150216493815}
-    - enemy_count: 2
-      spawn: {fileID: 2820311016985175420}
+    glitchDuration: 0.5
+    playGlitchSound: 0
   - spawn:
     - enemy_count: 3
       spawn: {fileID: 3833400588844012569}
@@ -15693,6 +15695,8 @@ MonoBehaviour:
       spawn: {fileID: 7496320001625945239}
     - enemy_count: 1
       spawn: {fileID: 1128839150216493815}
+    glitchDuration: 2
+    playGlitchSound: 0
   - spawn:
     - enemy_count: 2
       spawn: {fileID: 3833400588844012569}
@@ -15702,6 +15706,8 @@ MonoBehaviour:
       spawn: {fileID: 2820311016985175420}
     - enemy_count: 2
       spawn: {fileID: 1128839150216493815}
+    glitchDuration: 6
+    playGlitchSound: 1
   - spawn:
     - enemy_count: 2
       spawn: {fileID: 3833400588844012569}
@@ -15711,6 +15717,8 @@ MonoBehaviour:
       spawn: {fileID: 2820311016985175420}
     - enemy_count: 2
       spawn: {fileID: 1128839150216493815}
+    glitchDuration: 10
+    playGlitchSound: 1
   enemyPrefab: {fileID: 1977790482155856155, guid: b0394acd91f186944bc66eaa4a26d40c, type: 3}
   _waveText: {fileID: 3325770530033702813}
   _startGameAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}

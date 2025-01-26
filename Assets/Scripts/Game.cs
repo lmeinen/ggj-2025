@@ -1,8 +1,16 @@
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-
+public enum State
+{
+    TUTORIAL,
+    WAVE_TEXT,
+    IN_WAVE,
+    GLITCHING
+}
 
 //The game Singleton. Here, you can store references to objects that need to be globally accessible
 public class Game : MonoBehaviour
@@ -19,15 +27,26 @@ public class Game : MonoBehaviour
     public ParticleSystem bulletPopParticles;
     public ParticleSystem splatterParticles;
     public float popParticleSpeed = 10;
+    private EnemySpawner _enemySpawner;
+
+    public InputActionReference _startGameAction;
+    public GameObject _tutorialObject;
+
+    private float _textDuration = 3f;
+    public float TextDuration { get => _textDuration; private set => _textDuration = value; }
+
 
 
     Camera _mainCamera;
     public Camera MainCamera => _mainCamera;
     bool _finished = false;
+
+    private State _gameState;
+    public State GameState { get => _gameState; private set => _gameState = value;  }
+
     void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
-
         if (I != null && I != this)
         {
             Destroy(this);
@@ -41,33 +60,75 @@ public class Game : MonoBehaviour
     }
 
 
-    Enemy[] _levelEnemies;
     private void Start()
     {
         _mainCamera = Camera.main;
-        _levelEnemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+        _enemySpawner = FindAnyObjectByType<EnemySpawner>();
+        GameState = State.TUTORIAL;
     }
 
 
     void Update()
     {
-        Finished = IsLevelFinished();
+        switch(GameState) {
+            case State.TUTORIAL:
+                if(_startGameAction.action.ReadValue<Vector2>().sqrMagnitude != 0) {
+                    _tutorialObject.SetActive(false);
+                    GameState = State.WAVE_TEXT;
+                    _enemySpawner.ShowWaveText();
+                    TextDuration = 3f;
+                }
+                break;
+            case State.WAVE_TEXT:
+                TextDuration -= Time.deltaTime;
+                if (TextDuration <= 0) {
+                    _enemySpawner.SpawnWave();
+                    GameState = State.IN_WAVE;
+                }
+                break;
+            case State.IN_WAVE:
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                    // Kill all enemies (for testing purposes, of course)
+                    _enemySpawner.KillEveryone();
+                }
 
-        // Check if the 'C' key is pressed
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            // override for testing
-            Finished = true;
+                if (IsWaveFinished())
+                {
+                    StartCoroutine(StartGlitch(_enemySpawner.GlitchDuration(), _enemySpawner.PlayGlitchSound()));
+                    GameState = State.GLITCHING;
+                }
+                break;
+            case State.GLITCHING:
+                // do nothing - handled by coroutine
+                break;
         }
     }
 
-    public void StartGlitch()
+    public IEnumerator StartGlitch(float durationS, bool glitchSound)
     {
-        Debug.Log("Glitching...");
+        // TODO: add bool flag for sound
+        Debug.Log("Playing glitch for " + durationS);
+
+        if (glitchSound) {
+            MusicManager.I.FadeToGlitch();
+        }
 
         // switch rendering style
         RemoveRenderLayer(BLUE_PILL_LAYER);
         AddRenderLayer(RED_PILL_LAYER);
+
+        // Wait for the specified duration
+        yield return new WaitForSeconds(durationS);
+
+        // switch rendering style
+        RemoveRenderLayer(RED_PILL_LAYER);
+        AddRenderLayer(BLUE_PILL_LAYER);
+
+        // After glitch, start next wave
+        GameState = State.WAVE_TEXT;
+        _enemySpawner.ShowWaveText();
+        TextDuration = 3f;
     }
 
     public static GameObject CreateShot(GameObject g, Vector3 pos, Quaternion rot, Vector3 speed, float spread, Vector3 parent_vel)
@@ -76,6 +137,7 @@ public class Game : MonoBehaviour
         shot.GetComponent<Shot>().Initialize(speed, spread, parent_vel);
         return shot;
     }
+
     // Method to add a specific layer
     void AddRenderLayer(string layerName)
     {
@@ -92,7 +154,10 @@ public class Game : MonoBehaviour
         mainCamera.cullingMask &= ~(1 << layerIndex);
     }
 
-    private bool IsLevelFinished() {
-        return _levelEnemies.All(enemy => enemy.Dead);
+    private bool IsWaveFinished()
+    {
+        int noOfLiveEnemies = _enemySpawner.NoOfLiveEnemies();
+        Debug.Log("No of live enemies " + noOfLiveEnemies);
+        return noOfLiveEnemies <= 0;
     }
 }

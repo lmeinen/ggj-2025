@@ -181,6 +181,7 @@ MonoBehaviour:
   GLITCH_CLIP_NAME: Glitch
   HAPPY_FADE_DURATION: 1
   GLITCH_FADE_DURATION: 5
+  MUSIC_VOLUME: 0.3
 --- !u!1 &7521881686936971757
 GameObject:
   m_ObjectHideFlags: 0

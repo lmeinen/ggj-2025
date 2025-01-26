@@ -22,6 +22,8 @@ public class MusicManager : MonoBehaviour
     [Tooltip("music audio volume")]
     [SerializeField] private float MUSIC_VOLUME = 0.7f;
 
+    public static MusicManager I { get; private set; }
+
     private AudioSource happy;
     private AudioSource hell;
     private AudioSource glitch;
@@ -29,6 +31,14 @@ public class MusicManager : MonoBehaviour
 
     void Awake()
     {
+        // If there is an instance, and it's not me, delete myself.
+        if (I != null && I != this)
+        {
+            Destroy(this);
+            return;
+        }
+
+        I = this;
         AudioSource[] audioClips = GetComponentsInChildren<AudioSource>();
         happy = audioClips.First(clip => clip.name == HAPPY_CLIP_NAME);
         hell = audioClips.First(clip => clip.name == HELL_CLIP_NAME);
@@ -45,35 +55,34 @@ public class MusicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Game.I.Finished && happy.isPlaying)
-        {
-            // start glitch
-            StartCoroutine(FadeToGlitch(happy, glitch, HAPPY_FADE_DURATION));
-        }
+        // if (Game.I.Finished && happy.isPlaying)
+        // {
+        //     // start glitch
+        //     StartCoroutine(FadeToGlitch(happy, glitch, HAPPY_FADE_DURATION));
+        // }
 
-        if (glitch.isPlaying && glitch.time >= glitch.clip.length - GLITCH_FADE_DURATION && !_isFading)
-        {
-            // start fading out glitch for hell sound
-            StartCoroutine(Crossfade(glitch, hell, GLITCH_FADE_DURATION));
-            _isFading = true;
-        }
+        // if (glitch.isPlaying && glitch.time >= glitch.clip.length - GLITCH_FADE_DURATION && !_isFading)
+        // {
+        //     // start fading out glitch for hell sound
+        //     StartCoroutine(Crossfade(glitch, hell, GLITCH_FADE_DURATION));
+        //     _isFading = true;
+        // }
     }
 
-    private IEnumerator FadeToGlitch(AudioSource from, AudioSource to, float duration)
+    public IEnumerator FadeToGlitch()
     {
         float elapsed = 0f;
-        while (elapsed < duration)
+        while (elapsed < HAPPY_FADE_DURATION)
         {
-            from.volume = Mathf.Lerp(MUSIC_VOLUME, 0f, elapsed / duration);
+            happy.volume = Mathf.Lerp(MUSIC_VOLUME, 0f, elapsed / HAPPY_FADE_DURATION);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        from.Stop();
-        from.volume = MUSIC_VOLUME;
-        to.volume = MUSIC_VOLUME;
-        to.Play();
-        Game.I.StartGlitch();
+        happy.Stop();
+        happy.volume = MUSIC_VOLUME;
+        glitch.volume = MUSIC_VOLUME;
+        glitch.Play();
     }
 
     private IEnumerator Crossfade(AudioSource from, AudioSource to, float duration)

@@ -230,9 +230,7 @@ MonoBehaviour:
   gun: {fileID: 3691846802398095518}
   animator: {fileID: 305049705659890386}
   playerVis: {fileID: 1878788070922147598}
-  dashCooldown: 0
-  maxDashes: 2
-  dashDistance: 1
+  dash: {fileID: 0}
 --- !u!136 &4506023462651463240
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -741,6 +739,7 @@ MonoBehaviour:
     projectileSpeed: 5
     projectile: {fileID: 322902714031803359, guid: e0bc399c9495cf74da090286195a2497, type: 3}
     projectileSpread: 1
+    fireSound: {fileID: 8300000, guid: 4788ff2b1406b531d800699c782a011d, type: 3}
   projectileEmitTransform: {fileID: 3503135758644111113}
 --- !u!1 &6803223791023965115
 GameObject:
