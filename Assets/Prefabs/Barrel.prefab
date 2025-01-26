@@ -55,6 +55,8 @@ MonoBehaviour:
   enemyShotPrefab: {fileID: 5473549336006888113, guid: 50e5c92d4e58c8840a579884750e200a, type: 3}
   respawnDuration: 5
   _explosionScreenShake: {fileID: 5116165307633944566, guid: c30349b2f2714124eaf1859d1209f82c, type: 3}
+  explosionSound: {fileID: 8300000, guid: 32a2dcdc7ba218e60af1c3017c365167, type: 3}
+  explosionVolume: 0.5
 --- !u!33 &3648886171875596070
 MeshFilter:
   m_ObjectHideFlags: 0
