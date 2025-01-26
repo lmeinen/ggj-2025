@@ -14,6 +14,9 @@ public class Barrel : MonoBehaviour
 
     public CinemachineImpulseSource _explosionScreenShake;
 
+    public AudioClip explosionSound;
+    public float explosionVolume;
+
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class Barrel : MonoBehaviour
         {
             transform.localScale = Vector3.one * Mathf.Min(1, transform.localScale.x + Time.deltaTime / respawnDuration / 0.2f);
         }
-        
+
     }
 
 
@@ -41,6 +44,10 @@ public class Barrel : MonoBehaviour
 
         if (is_bubble || is_enemy_shot)
         {
+            if (explosionSound != null)
+            {
+                SoundManager.Instance.PlaySound(explosionSound, explosionVolume, true);
+            }
             _explosionScreenShake.GenerateImpulse();
             transform.localScale = Vector3.one * 0.1f;
             _respawnTimer = respawnDuration * 0.8f;
