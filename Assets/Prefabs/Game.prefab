@@ -16036,16 +16036,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
       propertyPath: footstepSounds.Array.size
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
       propertyPath: 'footstepSounds.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 9fc22ef9c2e037757aef89e29e568ca7, type: 3}
+      objectReference: {fileID: 8300000, guid: 53903e2dc990ed5e38322d484e053da2, type: 3}
     - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
       propertyPath: 'footstepSounds.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: dab03c4f7797e0b37b1de82d261005be, type: 3}
+      objectReference: {fileID: 8300000, guid: 8cc8853d12e62b5a593035fa38eb3c2e, type: 3}
     - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
       propertyPath: 'footstepSounds.Array.data[2]'
       value: 
