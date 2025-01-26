@@ -50,23 +50,12 @@ public class Shot : MonoBehaviour
         _lifetime -= Time.deltaTime;
         if (_lifetime < 0 && CanBeDestroyed)
         {
-            WhenDestroyed();
-            // Destroy(gameObject);
+            Destroy(gameObject);
         }
         _rb.AddForce(new Vector3(0, _gravity * Time.deltaTime, 0), ForceMode.VelocityChange);
     }
 
     protected virtual AudioClip HitSound() { return null; }
-
-    protected void WhenDestroyed()
-    {
-        Destroy(gameObject);
-        if (HitSound() != null) {
-            SoundManager.Instance.PlaySound(HitSound(), true);
-        }
-        SpawnParticles(Game.I.bubblePopParticles, Color);
-    }
-
 
     protected void SpawnParticles(ParticleSystem s, Color c)
     {
@@ -93,9 +82,6 @@ public class Shot : MonoBehaviour
     {
         if (collision.collider.CompareTag("Wall"))
         {
-            WhenDestroyed();
-            // Destroy(gameObject);
-
             ParticleSystem.EmitParams p = new()
             {
                 position = collision.GetContact(0).point + collision.GetContact(0).normal * 0.02f,
@@ -104,5 +90,14 @@ public class Shot : MonoBehaviour
             };
             Game.I.splatterParticles.Emit(p, 1);
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (HitSound() != null)
+        {
+            SoundManager.Instance.PlaySound(HitSound(), true);
+        }
+        SpawnParticles(Game.I.bubblePopParticles, Color);
     }
 }
