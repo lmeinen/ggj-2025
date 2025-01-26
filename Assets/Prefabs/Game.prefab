@@ -10300,8 +10300,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5523311320729550471}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.53230894, y: 0, z: 0, w: 0.84655017}
-  m_LocalPosition: {x: -1.09, y: 10.4, z: -5}
+  m_LocalRotation: {x: 0.5093635, y: 0, z: 0, w: 0.8605515}
+  m_LocalPosition: {x: -1.09, y: 16.4, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10363,7 +10363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0, y: 10, z: -4}
+  ShoulderOffset: {x: 0, y: 16, z: -8}
   VerticalArmLength: 0.4
   CameraSide: 1
   CameraDistance: 1
