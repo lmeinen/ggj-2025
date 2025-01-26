@@ -47,7 +47,8 @@ public class Bubble : Shot
     {
         _rb.isKinematic = true;
         hit_enemy = true;
-        hit_enemy_pos = enemy.transform.position;
+        hit_enemy_pos = enemy.Center;
         hit_enemy_size = enemy.transform.localScale.x * 4f;
+        GetComponent<Collider>().enabled = false;
     }
 }
