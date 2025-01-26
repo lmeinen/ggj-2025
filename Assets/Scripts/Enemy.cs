@@ -160,6 +160,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnDestroy() {
+        // clean up bubble
+        Destroy(_inBubble.gameObject);
+    }
+
     //Called when a something enters the enemy trigger collider
     public void OnTriggerEnter(Collider other)
     {
