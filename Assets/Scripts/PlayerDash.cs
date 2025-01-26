@@ -15,6 +15,8 @@ public class PlayerDash : MonoBehaviour
     Vector3 _vel;
     public Vector3 Velocity => _vel;
 
+    public AudioClip dashSound;
+
 
     float _dashStart = 0f;
 
@@ -51,5 +53,9 @@ public class PlayerDash : MonoBehaviour
     {
         _dashStart = Time.realtimeSinceStartup;
         _vel = dash_dir * distance / duration;
+        if (dashSound != null)
+        {
+            SoundManager.Instance.PlaySound(dashSound, true);
+        }
     }
 }

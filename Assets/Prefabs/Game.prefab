@@ -5033,6 +5033,7 @@ MonoBehaviour:
   maxAmount: 2
   distance: 4
   duration: 0.15
+  dashSound: {fileID: 8300000, guid: 840ae9202175ec6718afcbcc76125e1c, type: 3}
 --- !u!33 &2862551747090086899
 MeshFilter:
   m_ObjectHideFlags: 0
