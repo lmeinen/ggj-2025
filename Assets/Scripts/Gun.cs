@@ -21,6 +21,9 @@ public struct GunParameters
 
     [Tooltip("Audioclip to use (as base - pitch variations are randomized) when firing")]
     public AudioClip fireSound;
+
+    [Tooltip("Volume to play audioclip with")]
+    public float fireSoundVolume;
 }
 
 
@@ -73,7 +76,7 @@ public class Gun : MonoBehaviour
         if (gunParameters.fireSound != null)
         {
             // TODO: Introduce pitch variation
-            SoundManager.Instance.PlaySound(gunParameters.fireSound, true);
+            SoundManager.Instance.PlaySound(gunParameters.fireSound, gunParameters.fireSoundVolume, true);
 
         }
     }

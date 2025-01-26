@@ -55,7 +55,7 @@ public class PlayerDash : MonoBehaviour
         _vel = dash_dir * distance / duration;
         if (dashSound != null)
         {
-            SoundManager.Instance.PlaySound(dashSound, true);
+            SoundManager.Instance.PlaySound(dashSound, 1f, true);
         }
     }
 }

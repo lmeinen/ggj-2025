@@ -117,7 +117,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.007, y: 1, z: 1.954}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1464041470461059404}
@@ -480,7 +480,8 @@ MonoBehaviour:
     projectileSpeed: 10
     projectile: {fileID: 5473549336006888113, guid: 50e5c92d4e58c8840a579884750e200a, type: 3}
     projectileSpread: 0
-    fireSound: {fileID: 0}
+    fireSound: {fileID: 8300000, guid: 477c62676053ef8cb9080aadd7d6a763, type: 3}
+    fireSoundVolume: 0.5
   projectileEmitTransform: {fileID: 4130989887505746333}
 --- !u!1 &6368007909666946494
 GameObject:

@@ -101,8 +101,8 @@ public class Enemy : MonoBehaviour
 
                     if (_navigationTimer < 0f)
                     {
-                        _agent.speed = 3f;
-                        _navigationTimer = 1f;
+                        _agent.speed = 5f;
+                        _navigationTimer = 5f;
                         _agent.SetDestination(_lastPlayerPosition);
                     }
                     _lastSeenPlayer = Time.realtimeSinceStartup;
@@ -122,13 +122,13 @@ public class Enemy : MonoBehaviour
             //navigation time is 0 and we haven't seen the player for a while -> go to a random position nearby
             if (_navigationTimer < 0f && !seen_player_recently)
             {
-                _navigationTimer = 1f;
+                _navigationTimer = 5f;
 
-                _agent.speed = 1.5f;
+                _agent.speed = 3.5f;
                 float move_angle = Random.Range(0, 2 * Mathf.PI);
                 //move to map center
-                Vector3 dir = new Vector3(Mathf.Cos(move_angle), 0, Mathf.Sin(move_angle)) * 10f;
-                _agent.SetDestination(dir);
+                Vector3 dir = new Vector3(Mathf.Cos(move_angle), 0, Mathf.Sin(move_angle)) * 15f;
+                _agent.SetDestination(_player.transform.position + dir);
             }
             _navigationTimer -= Time.deltaTime;
         }
