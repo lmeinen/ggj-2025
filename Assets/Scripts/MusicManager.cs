@@ -64,44 +64,9 @@ public class MusicManager : MonoBehaviour
         hell.Play();
     }
 
-    private void StartSound(AudioSource audio)
-    {
-        // audio.
-    }
-
-    public IEnumerator FadeToGlitch()
-    {
-        float elapsed = 0f;
-        while (elapsed < HAPPY_FADE_DURATION)
-        {
-            happy.volume = Mathf.Lerp(MUSIC_VOLUME, 0f, elapsed / HAPPY_FADE_DURATION);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
+    public void StartGlitch() {
         happy.Stop();
-        happy.volume = MUSIC_VOLUME;
-        glitch.volume = MUSIC_VOLUME;
+        hell.Stop();
         glitch.Play();
-    }
-
-    private IEnumerator Crossfade(AudioSource from, AudioSource to, float duration)
-    {
-        to.volume = 0f;
-        to.Play();
-
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            from.volume = Mathf.Lerp(MUSIC_VOLUME, 0f, elapsed / duration);
-            to.volume = Mathf.Lerp(0f, MUSIC_VOLUME, elapsed / duration);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        from.Stop();
-        from.volume = MUSIC_VOLUME;
-        to.volume = MUSIC_VOLUME;
     }
 }

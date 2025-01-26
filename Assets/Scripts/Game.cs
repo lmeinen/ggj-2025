@@ -125,7 +125,7 @@ public class Game : MonoBehaviour
 
         if (glitchSound)
         {
-            StartCoroutine(MusicManager.I.FadeToGlitch());
+            MusicManager.I.StartGlitch();
         }
         else
         {
