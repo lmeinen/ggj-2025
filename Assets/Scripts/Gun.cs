@@ -72,9 +72,6 @@ public class Gun : MonoBehaviour
 
         if (gunParameters.fireSound != null)
         {
-            if (SoundManager.Instance == null) {
-                Debug.Log("is null");
-            }
             // TODO: Introduce pitch variation
             SoundManager.Instance.PlaySound(gunParameters.fireSound, true);
 

@@ -19,6 +19,9 @@ public class MusicManager : MonoBehaviour
     [Tooltip("audio clip fade transition duration in seconds")]
     [SerializeField] private float GLITCH_FADE_DURATION = 5f;
 
+    [Tooltip("music audio volume")]
+    [SerializeField] private float MUSIC_VOLUME = 0.7f;
+
     private AudioSource happy;
     private AudioSource hell;
     private AudioSource glitch;
@@ -30,6 +33,9 @@ public class MusicManager : MonoBehaviour
         happy = audioClips.First(clip => clip.name == HAPPY_CLIP_NAME);
         hell = audioClips.First(clip => clip.name == HELL_CLIP_NAME);
         glitch = audioClips.First(clip => clip.name == GLITCH_CLIP_NAME);
+        happy.volume = MUSIC_VOLUME;
+        hell.volume = MUSIC_VOLUME;
+        glitch.volume = MUSIC_VOLUME;
         happy.Play();
         hell.Stop();
         _isFading = false;
@@ -58,14 +64,14 @@ public class MusicManager : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            from.volume = Mathf.Lerp(1f, 0f, elapsed / duration);
+            from.volume = Mathf.Lerp(MUSIC_VOLUME, 0f, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         from.Stop();
-        from.volume = 1f;
-        to.volume = 1f;
+        from.volume = MUSIC_VOLUME;
+        to.volume = MUSIC_VOLUME;
         to.Play();
         Game.I.StartGlitch();
     }
@@ -79,14 +85,14 @@ public class MusicManager : MonoBehaviour
 
         while (elapsed < duration)
         {
-            from.volume = Mathf.Lerp(1f, 0f, elapsed / duration);
-            to.volume = Mathf.Lerp(0f, 1f, elapsed / duration);
+            from.volume = Mathf.Lerp(MUSIC_VOLUME, 0f, elapsed / duration);
+            to.volume = Mathf.Lerp(0f, MUSIC_VOLUME, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         from.Stop();
-        from.volume = 1f;
-        to.volume = 1f;
+        from.volume = MUSIC_VOLUME;
+        to.volume = MUSIC_VOLUME;
     }
 }
