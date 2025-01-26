@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
         {
             _dead = true;
             //TODO somehow kill the player & reload the level & maybe show the glitch
-            Debug.Log("Player hit by enemy shot. Skill issue.");
+            //Debug.Log("Player hit by enemy shot. Skill issue.");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
