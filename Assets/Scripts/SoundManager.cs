@@ -26,13 +26,13 @@ public class SoundManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlaySound(AudioClip clip, bool randomizePitch)
+    public void PlaySound(AudioClip clip, float volume, bool randomizePitch)
     {
         if (randomizePitch)
         {
             audioSource.pitch = Random.Range(minPitch, maxPitch);
         }
 
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip, volume);
     }
 }

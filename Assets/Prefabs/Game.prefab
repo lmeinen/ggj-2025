@@ -16082,6 +16082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3691846802398095518, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: gunParameters.fireSoundVolume
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 4506023462651463240, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
       propertyPath: m_Height
       value: 1.6
