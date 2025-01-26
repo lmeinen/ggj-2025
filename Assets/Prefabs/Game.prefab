@@ -5370,8 +5370,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tutorial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
-  m_sharedMaterial: {fileID: -4311902185584306452, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10301,8 +10301,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5523311320729550471}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.58787465, y: 0, z: 0, w: 0.80895203}
-  m_LocalPosition: {x: -1.09, y: 15.4, z: -5}
+  m_LocalRotation: {x: 0.5093635, y: 0, z: 0, w: 0.8605515}
+  m_LocalPosition: {x: -1.09, y: 16.4, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10364,7 +10364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0, y: 15, z: -4}
+  ShoulderOffset: {x: 0, y: 16, z: -8}
   VerticalArmLength: 0.4
   CameraSide: 1
   CameraDistance: 1
@@ -15501,8 +15501,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
-  m_sharedMaterial: {fileID: -4311902185584306452, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20771,8 +20771,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
-  m_sharedMaterial: {fileID: -4311902185584306452, guid: 5c659c9a694774847850f8e852cb7824, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20899,6 +20899,30 @@ PrefabInstance:
       propertyPath: m_IncludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: footstepSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: 'footstepSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 53903e2dc990ed5e38322d484e053da2, type: 3}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: 'footstepSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 8cc8853d12e62b5a593035fa38eb3c2e, type: 3}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: 'footstepSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c1e2270495efaf4fb48a0bede3da308, type: 3}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: 'footstepSounds.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: dfe36009c2ae5b0a9bfa72f1b02b4d94, type: 3}
+    - target: {fileID: 1878788070922147598, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: 'footstepSounds.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a1c9488ecafef67ef9ec715ccd87fb92, type: 3}
     - target: {fileID: 2596550475135761224, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
