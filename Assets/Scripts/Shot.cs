@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shot : MonoBehaviour
@@ -89,6 +90,7 @@ public class Shot : MonoBehaviour
                 startColor = Color
             };
             Game.I.splatterParticles.Emit(p, 1);
+            Destroy(gameObject);
         }
     }
 
@@ -96,7 +98,8 @@ public class Shot : MonoBehaviour
     {
         if (HitSound() != null)
         {
-            SoundManager.Instance.PlaySound(HitSound(), 1f, true);
+            if (!SoundManager.Instance.IsDestroyed())
+                SoundManager.Instance.PlaySound(HitSound(), 1f, true);
         }
         SpawnParticles(Game.I.bubblePopParticles, Color);
     }

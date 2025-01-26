@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class PlayerDash : MonoBehaviour

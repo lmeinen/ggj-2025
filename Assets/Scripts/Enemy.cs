@@ -59,6 +59,20 @@ public class Enemy : MonoBehaviour
             bool player_detected = distance < viewDistance;
             bool seen_player_recently = Time.realtimeSinceStartup - _lastSeenPlayer < 1f;
 
+            if (seen_player_recently)
+            {
+                Vector3 dir = _lastPlayerPosition - transform.position;
+                transform.rotation = Quaternion.Euler(0, -Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg, 0);
+                gun.AimAt(_lastPlayerPosition);
+            }
+            else
+            {
+                Vector3 dir = _agent.velocity;
+                transform.rotation = Quaternion.Euler(0, -Mathf.Atan2(dir.z, dir.x) * Mathf.Rad2Deg, 0);
+                gun.AimAt(dir);
+            }
+
+
             //player in view cone and close enough
             if (player_detected)
             {
@@ -107,18 +121,8 @@ public class Enemy : MonoBehaviour
                     }
                     _lastSeenPlayer = Time.realtimeSinceStartup;
                 }
-                else
-                {
-                    if (seen_player_recently)
-                    {
-                        gun.AimAt(_lastPlayerPosition);
-                    }
-                    else
-                    {
-                        gun.AimAt(transform.position + _agent.velocity);
-                    }
-                }
             }
+
             //navigation time is 0 and we haven't seen the player for a while -> go to a random position nearby
             if (_navigationTimer < 0f && !seen_player_recently)
             {

@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerVisuals playerVis;
 
 
+    public ParticleSystem dashTrail;
+
     Camera _mainCamera;
     Rigidbody _rigidbody;
 
@@ -57,6 +59,22 @@ public class Player : MonoBehaviour
 
 
         _rigidbody.linearVelocity = move + dash.Velocity;
+
+        if (dash.Velocity != Vector3.zero)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                Vector4 local = new (Random.Range(-0.5f, 0.5f), Random.Range(0f, 1.7f), -0.2f, 1f);
+
+                ParticleSystem.EmitParams ps = new()
+                {
+                    position = transform.localToWorldMatrix * local,
+                    //velocity = -_rigidbody.linearVelocity / 5f
+                };
+                dashTrail.Emit(ps, 1);
+            }
+        }
+
 
         if (move_action.x != 0 || move_action.y != 0)
         {
