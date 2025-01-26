@@ -913,100 +913,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game
       objectReference: {fileID: 0}
-    - target: {fileID: 2101864455102678404, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-      propertyPath: gunParameters.fireSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 4788ff2b1406b531d800699c782a011d, type: 3}
-    - target: {fileID: 6193240370631660349, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-      propertyPath: _tutorialObject
-      value: 
-      objectReference: {fileID: 1686899675}
-    - target: {fileID: 6193240370631660349, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-      propertyPath: _startGameAction
-      value: 
-      objectReference: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-    - target: {fileID: 8933141582090160028, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-      propertyPath: enemyWaves.Array.data[0].glitchDuration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933141582090160028, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-      propertyPath: enemyWaves.Array.data[1].glitchDuration
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933141582090160028, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-      propertyPath: enemyWaves.Array.data[2].glitchDuration
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933141582090160028, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-      propertyPath: enemyWaves.Array.data[3].glitchDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933141582090160028, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-      propertyPath: enemyWaves.Array.data[2].playGlitchSound
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933141582090160028, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-      propertyPath: enemyWaves.Array.data[3].playGlitchSound
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933141582090160028, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-      propertyPath: enemyWaves.Array.data[0].spawn.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
---- !u!1 &832575517
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 832575519}
-  - component: {fileID: 832575518}
-  m_Layer: 0
-  m_Name: Global Volume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &832575518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832575517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
---- !u!4 &832575519
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832575517}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &987677004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1907,11 +1818,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d95870413c3ca31498832d4141d11675, type: 3}
---- !u!1 &1686899675 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 285527528736424608, guid: 66d8761a1a5250c4d900449decca0837, type: 3}
-  m_PrefabInstance: {fileID: 779765615}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1765723963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11666,7 +11572,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 410087041}
-  - {fileID: 832575519}
   - {fileID: 1765723963}
   - {fileID: 1370995105}
   - {fileID: 3874344832300936831}

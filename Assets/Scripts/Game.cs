@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public enum State
 {
@@ -35,6 +36,10 @@ public class Game : MonoBehaviour
     private float _textDuration = 3f;
     public float TextDuration { get => _textDuration; private set => _textDuration = value; }
 
+
+    public Volume globalVolume;
+    public VolumeProfile bluePillProfile;
+    public VolumeProfile redPillProfile;
 
 
     Camera _mainCamera;
@@ -103,6 +108,12 @@ public class Game : MonoBehaviour
                 // do nothing - handled by coroutine
                 break;
         }
+
+
+        if (Keyboard.current.f1Key.wasPressedThisFrame)
+        {
+            StartCoroutine(StartGlitch(5f, true));
+        }
     }
 
     public IEnumerator StartGlitch(float durationS, bool glitchSound)
@@ -117,6 +128,7 @@ public class Game : MonoBehaviour
         // switch rendering style
         RemoveRenderLayer(BLUE_PILL_LAYER);
         AddRenderLayer(RED_PILL_LAYER);
+        globalVolume.profile = redPillProfile;
 
         // Wait for the specified duration
         yield return new WaitForSeconds(durationS);
@@ -124,6 +136,7 @@ public class Game : MonoBehaviour
         // switch rendering style
         RemoveRenderLayer(RED_PILL_LAYER);
         AddRenderLayer(BLUE_PILL_LAYER);
+        globalVolume.profile = bluePillProfile;
 
         // After glitch, start next wave
         GameState = State.WAVE_TEXT;
