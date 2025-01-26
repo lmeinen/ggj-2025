@@ -96,7 +96,7 @@ public class Shot : MonoBehaviour
     {
         if (HitSound() != null)
         {
-            SoundManager.Instance.PlaySound(HitSound(), true);
+            SoundManager.Instance.PlaySound(HitSound(), 1f, true);
         }
         SpawnParticles(Game.I.bubblePopParticles, Color);
     }

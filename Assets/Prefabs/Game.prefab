@@ -5033,6 +5033,7 @@ MonoBehaviour:
   maxAmount: 2
   distance: 4
   duration: 0.15
+  dashSound: {fileID: 8300000, guid: 840ae9202175ec6718afcbcc76125e1c, type: 3}
 --- !u!33 &2862551747090086899
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -16080,6 +16081,10 @@ PrefabInstance:
     - target: {fileID: 3160206503682476280, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3691846802398095518, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
+      propertyPath: gunParameters.fireSoundVolume
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4506023462651463240, guid: b6e93b13b7f59804fb8b5b0b539c54b0, type: 3}
       propertyPath: m_Height

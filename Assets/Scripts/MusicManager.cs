@@ -27,7 +27,6 @@ public class MusicManager : MonoBehaviour
     private AudioSource happy;
     private AudioSource hell;
     private AudioSource glitch;
-    private bool _isFading;
 
     void Awake()
     {
@@ -48,7 +47,6 @@ public class MusicManager : MonoBehaviour
         glitch.volume = MUSIC_VOLUME;
         happy.Play();
         hell.Stop();
-        _isFading = false;
         DontDestroyOnLoad(gameObject); // Keep this GameObject alive across scenes
     }
 
@@ -66,7 +64,8 @@ public class MusicManager : MonoBehaviour
         hell.Play();
     }
 
-    private void StartSound(AudioSource audio) {
+    private void StartSound(AudioSource audio)
+    {
         // audio.
     }
 
