@@ -137,8 +137,8 @@ public class Enemy : MonoBehaviour
         Dead = true;
     }
 
-    //Called when the enemy is hit by a bubble
-    void HitByBubble(Bubble b)
+    // Called when the enemy is hit by a bubble
+    public void HitByBubble(Bubble b)
     {
         _agent.isStopped = true;
         //is this the first bubble to hit this enemy

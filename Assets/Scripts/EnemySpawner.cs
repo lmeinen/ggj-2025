@@ -30,16 +30,19 @@ public class EnemySpawner : MonoBehaviour
     public TextMeshProUGUI _waveText;
     public InputActionReference _startGameAction;
     public GameObject _tutorialObject;
+    public Bubble bubblePrefab;
 
     int _waveIndex = 0;
 
-    public void ShowWaveText() {
+    public void ShowWaveText()
+    {
         _waveText.gameObject.SetActive(true);
         _waveText.text = $"Wave {_waveIndex + 1}";
     }
 
-    public void KillEveryone() {
-        _currentEnemies.ForEach(enemy => enemy.Kill());
+    public void KillEveryone()
+    {
+        _currentEnemies.ForEach(enemy => enemy.HitByBubble(Instantiate(bubblePrefab, enemy.transform.position, Quaternion.identity, Game.I.transform)));
     }
 
     public int NoOfLiveEnemies()
@@ -47,11 +50,13 @@ public class EnemySpawner : MonoBehaviour
         return _currentEnemies.Count(enemy => !enemy.Dead);
     }
 
-    public float GlitchDuration() {
+    public float GlitchDuration()
+    {
         return enemyWaves[_waveIndex - 1].glitchDuration;
     }
 
-    public bool PlayGlitchSound() {
+    public bool PlayGlitchSound()
+    {
         return enemyWaves[_waveIndex - 1].playGlitchSound;
     }
 
@@ -60,6 +65,7 @@ public class EnemySpawner : MonoBehaviour
         _waveText.gameObject.SetActive(false);
         _waveText.gameObject.SetActive(false);
 
+        _currentEnemies.ForEach(enemy => Destroy(enemy));
         _currentEnemies.Clear();
 
         foreach (var spawn in enemyWaves[_waveIndex].spawn)
