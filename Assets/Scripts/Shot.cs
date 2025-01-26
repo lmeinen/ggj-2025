@@ -27,12 +27,12 @@ public class Shot : MonoBehaviour
         _gravity = Random.Range(gravityFrom, gravityTo);
 
         _rb = GetComponent<Rigidbody>();
-        
-        Vector3 right = new (-speed.z, 0, speed.x);
-        float angle = Random.Range(-spread/2, spread/2);
+
+        Vector3 right = new(-speed.z, 0, speed.x);
+        float angle = Random.Range(-spread / 2, spread / 2);
         _rb.linearVelocity = Mathf.Sin(angle) * right + Mathf.Cos(angle) * speed + parent_vel;
 
-        transform.localScale *= Random.Range(sizeFrom, sizeTo);        
+        transform.localScale *= Random.Range(sizeFrom, sizeTo);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -51,15 +51,19 @@ public class Shot : MonoBehaviour
         if (_lifetime < 0 && CanBeDestroyed)
         {
             WhenDestroyed();
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
         _rb.AddForce(new Vector3(0, _gravity * Time.deltaTime, 0), ForceMode.VelocityChange);
     }
 
-    public virtual void HitSomething(Collider hit) { }
+    protected virtual AudioClip HitSound() { return null; }
 
-    protected virtual void WhenDestroyed() {
+    protected void WhenDestroyed()
+    {
         Destroy(gameObject);
+        if (HitSound() != null) {
+            SoundManager.Instance.PlaySound(HitSound(), true);
+        }
         SpawnParticles(Game.I.bubblePopParticles, Color);
     }
 
@@ -90,7 +94,7 @@ public class Shot : MonoBehaviour
         if (collision.collider.CompareTag("Wall"))
         {
             WhenDestroyed();
-            Destroy(gameObject);
+            // Destroy(gameObject);
 
             ParticleSystem.EmitParams p = new()
             {
@@ -99,10 +103,6 @@ public class Shot : MonoBehaviour
                 startColor = Color
             };
             Game.I.splatterParticles.Emit(p, 1);
-        }
-        else
-        {
-            HitSomething(collision.collider);
         }
     }
 }

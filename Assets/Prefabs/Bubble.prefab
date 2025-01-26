@@ -55,6 +55,7 @@ MonoBehaviour:
   gravityFrom: -0.05
   gravityTo: 0.05
   afterHitConvergeRate: 0.5
+  popSound: {fileID: 8300000, guid: 2f5dabac193799a6295e9351d1dc6fea, type: 3}
 --- !u!33 &9109003593635720288
 MeshFilter:
   m_ObjectHideFlags: 0

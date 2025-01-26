@@ -11,6 +11,9 @@ public class Bubble : Shot
     [Tooltip("How quickly to converge to the hit enemy"), Range(0.01f, 1f)]
     public float afterHitConvergeRate = 0.5f;
 
+    [Tooltip("Audioclip to use (as base - pitch variations are randomized) when bubble pops")]
+    public AudioClip popSound;
+
     protected Material _mat;
 
     protected override bool CanBeDestroyed => !hit_enemy;
@@ -24,6 +27,8 @@ public class Bubble : Shot
         //assign a random, bright, color
         _mat.color = Random.ColorHSV(0, 1, 1, 1, 0.5f, 0.5f, 0.9f, 0.9f);
     }
+
+    protected override AudioClip HitSound() => popSound;
 
     // Update is called once per frame
     protected override void MyUpdate()
